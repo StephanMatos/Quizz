@@ -5,7 +5,7 @@ public class Question {
 
     public Question(String q,String a1, String a2, String a3, String a4, Theme theme ){
 
-
+super();
 
     }
 
