@@ -14,7 +14,7 @@ public class Client {
     private Socket sock;
     private BufferedReader bir;
     private PrintWriter pw;
-    private String username,password,a;
+    private String username,password;
 
 
     public Client(){
