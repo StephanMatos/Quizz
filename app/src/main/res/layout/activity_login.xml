@@ -16,9 +16,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:hint="Username" />
+        android:hint="Username"
+        android:layout_alignRight="@+id/blogin"
+        android:layout_alignEnd="@+id/blogin" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -52,5 +52,14 @@
         android:id="@+id/tvRegister"
         android:layout_below="@+id/blogin"
         android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/DTU"
+        android:layout_below="@+id/tvRegister"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="137dp" />
 
 </RelativeLayout>
