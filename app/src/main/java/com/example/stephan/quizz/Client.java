@@ -17,7 +17,8 @@ public class Client {
     private String username,password;
 
 
-    public Client(){
+    public Client(LoginActivity login){
+
 
 
     }
