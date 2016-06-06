@@ -45,5 +45,6 @@ public class LoginActivity extends AppCompatActivity {
                 LoginActivity.this.startActivity(loginIntent);
             }
         });
+        jsad
     }
 }
