@@ -24,7 +24,6 @@ public class Client {
     }
 
 
-
     public void login(String username,String password){
 
         this.username = username;
