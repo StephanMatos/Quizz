@@ -16,19 +16,22 @@ public class Client {
     private Socket sock;
     private BufferedReader bir;
     private PrintWriter pw;
-    private String username,password,password2;
+    private String username,password;
+    public boolean loggedIn;
 
 
     public Client(){
 
+
     }
 
-    public class Login extends AsyncTask<String, Void, Void> {
+    public class Login extends AsyncTask<String, Void, String> {
 
-        protected Void doInBackground(String... params) {
-            String ip = "62.44.134.26";
+        protected String doInBackground(String... params) {
+            String ip = "10.16.168.102";
             try{
                 sock = new Socket(ip,2048);
+                System.out.println(sock);
                 bir = new BufferedReader(new InputStreamReader(sock.getInputStream()));
                 pw = new PrintWriter(sock.getOutputStream());
 
@@ -37,25 +40,34 @@ public class Client {
                 e.printStackTrace();
             }
 
-            params[0] = username;
-            params[1] = password;
-            System.out.println(username+password+"Jeg er inde i metoden nu haha");
+            username = params[0];
+            password = params[1];
+            System.out.println(username+password+"Jeg er inde i metoden");
+            String s = null;
             try {
-            pw.print("LOGIN");
+            pw.println("LOGIN");
             pw.flush();
-            pw.print(username);
+            pw.println(username);
             pw.flush();
-            pw.print(password);
+            pw.println(password);
             pw.flush();
-                String s = bir.readLine();
+                s = bir.readLine();
                 if(s.contains("OK")){
-
                 }
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return null;
+
+            return s;
+        }
+
+        protected void onPostExecute(String s){
+            if(s.equals("OK")){
+                loggedIn = true;
+            }
+            loggedIn = false;
+
         }
 
     }

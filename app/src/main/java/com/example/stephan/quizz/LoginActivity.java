@@ -1,5 +1,7 @@
 package com.example.stephan.quizz;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +15,13 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import java.io.BufferedReader;
+
 public class LoginActivity extends AppCompatActivity {
 
     private GoogleApiClient client;
     public Client client1;
+    private BufferedReader bir;
 
 
 
@@ -51,9 +56,20 @@ public class LoginActivity extends AppCompatActivity {
 
                 client1 = new Client();
                 client1.new Login().execute(u,p);
+
                 Intent loginIntent = new Intent(LoginActivity.this, startmenu.class);
                 LoginActivity.this.startActivity(loginIntent);
             }
         });
+    }
+
+    public void ShowAlert(View view) {
+        AlertDialog.Builder alarm = new AlertDialog.Builder(this);
+        alarm.setMessage("Connection Established").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        }).create();
     }
 }
