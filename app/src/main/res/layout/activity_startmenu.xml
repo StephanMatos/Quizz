@@ -13,36 +13,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/bstart_newgame"
-        android:src="@drawable/start_newgame"
+        android:background="@drawable/start_newgame"
         android:layout_marginTop="192dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/bcurrent_game"
-        android:src="@drawable/current_games"
+        android:background="@drawable/current_games"
         android:layout_below="@+id/bstart_newgame"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/bstart_newgame"
+        android:layout_alignEnd="@+id/bstart_newgame" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/blogout"
-        android:src="@drawable/logout"
+        android:background="@drawable/logout"
         android:layout_below="@+id/bcurrent_game"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/bcurrent_game"
+        android:layout_alignEnd="@+id/bcurrent_game" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/dtu"
-        android:src="@drawable/dtu"
+        android:background="@drawable/dtu"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

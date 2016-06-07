@@ -25,5 +25,13 @@ public class startmenu extends AppCompatActivity  {
                 startmenu.this.startActivity(logoutIntent);
             }
         });
+
+        bstart_newgame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent new_gameIntent = new Intent(startmenu.this, invitescreen.class);
+                startmenu.this.startActivity(new_gameIntent);
+            }
+        });
     }
 }
