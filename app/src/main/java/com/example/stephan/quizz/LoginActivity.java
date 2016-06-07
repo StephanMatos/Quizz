@@ -43,11 +43,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                client1.sock("62.44.134.26");
                 String u = etUsername.getText().toString();
                 String p = etPassword.getText().toString();
-                client1.login(u,p);
 
+                //Client.Login.execute(u,p);
+                client1.new Login().execute(u,p);
                 Intent loginIntent = new Intent(LoginActivity.this, startmenu.class);
                 LoginActivity.this.startActivity(loginIntent);
             }

@@ -1,5 +1,6 @@
 package com.example.stephan.quizz;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,13 +33,12 @@ public class register extends AppCompatActivity {
 
         bregister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                client1.sock("62.44.134.26");
-                if(etPassword.equals(atPassword)){
+                String u = etUsername.getText().toString();
+                String p = etPassword.getText().toString();
 
-                    String u = etUsername.getText().toString();
-                    String p = etPassword.getText().toString();
-                    client1.newUser(u,p);
-                }
+                //Client.Login.execute(u,p);
+                client1.new newUser().execute(u,p);
+
             }
         });
     }
