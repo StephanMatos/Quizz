@@ -16,6 +16,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 public class LoginActivity extends AppCompatActivity {
 
     private GoogleApiClient client;
+    public Client client1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,12 @@ public class LoginActivity extends AppCompatActivity {
         blogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                client1.sock("62.44.134.26");
+                String u = etUsername.getText().toString();
+                String p = etPassword.getText().toString();
+                client1.login(u,p);
+
                 Intent loginIntent = new Intent(LoginActivity.this, startmenu.class);
                 LoginActivity.this.startActivity(loginIntent);
             }
