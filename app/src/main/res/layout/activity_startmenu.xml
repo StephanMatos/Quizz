@@ -34,7 +34,8 @@
         android:id="@+id/blogout"
         android:src="@drawable/logout"
         android:layout_below="@+id/bcurrent_game"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:layout_width="wrap_content"
