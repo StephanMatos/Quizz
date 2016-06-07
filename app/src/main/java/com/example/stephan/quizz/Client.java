@@ -39,6 +39,7 @@ public class Client {
 
             params[0] = username;
             params[1] = password;
+            System.out.println(username+password+"Jeg er inde i metoden nu haha");
             try {
             pw.print("LOGIN");
             pw.flush();

@@ -18,6 +18,8 @@ public class LoginActivity extends AppCompatActivity {
     private GoogleApiClient client;
     public Client client1;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +47,9 @@ public class LoginActivity extends AppCompatActivity {
 
                 String u = etUsername.getText().toString();
                 String p = etPassword.getText().toString();
+                System.out.println(u+p);
 
-                //Client.Login.execute(u,p);
+                client1 = new Client();
                 client1.new Login().execute(u,p);
                 Intent loginIntent = new Intent(LoginActivity.this, startmenu.class);
                 LoginActivity.this.startActivity(loginIntent);
