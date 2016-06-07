@@ -75,7 +75,6 @@ public class Client {
 
             params[0] = username;
             params[1] = password;
-            params[2] = password2;
             try {
                 pw.print("New User");
                 pw.flush();
@@ -83,8 +82,7 @@ public class Client {
                 pw.flush();
                 pw.print(password);
                 pw.flush();
-                pw.print(password2);
-                pw.flush();
+
 
                 String s = bir.readLine();
                 if(s.contains("OK")){

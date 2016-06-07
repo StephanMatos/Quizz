@@ -35,8 +35,10 @@ public class register extends AppCompatActivity {
             public void onClick(View v) {
                 String u = etUsername.getText().toString();
                 String p = etPassword.getText().toString();
-
-                //Client.Login.execute(u,p);
+                String p1 = atPassword.getText().toString();
+                if(!p.equals(p1)){
+                    return;
+                }
                 client1.new newUser().execute(u,p);
 
             }
