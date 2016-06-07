@@ -39,7 +39,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:onClick="ShowAlert"
         android:id="@+id/blogin"
         android:onClick="Showalert"
         android:layout_below="@+id/etPassword"
