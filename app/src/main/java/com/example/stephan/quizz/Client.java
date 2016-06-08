@@ -103,5 +103,11 @@ public class Client {
         }
     }
 
+    public void LogOut(){
+        pw.println("LOGOUT");
+        pw.flush();
+
+    }
+
 
 }
