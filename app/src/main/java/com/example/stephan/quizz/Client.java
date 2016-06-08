@@ -29,34 +29,32 @@ public class Client {
 
         protected String doInBackground(String... params) {
             String ip = "10.16.168.102";
+            String s = null;
             try{
                 sock = new Socket(ip,2048);
                 System.out.println(sock);
                 bir = new BufferedReader(new InputStreamReader(sock.getInputStream()));
                 pw = new PrintWriter(sock.getOutputStream());
 
-            } catch(IOException e){
-
-                e.printStackTrace();
-            }
-
             username = params[0];
             password = params[1];
             System.out.println(username+password+"Jeg er inde i metoden");
-            String s = null;
 
-            try {
             pw.println("LOGIN\n"+username+"\n"+password);
             pw.flush();
+
                 s = bir.readLine();
                 if(s.contains("OK")){
+
                 }
+
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
             return s;
         }
+
         protected void onPostExecute(String s){
             if(s.equals("OK")){
                 loggedIn = true;
@@ -75,14 +73,9 @@ public class Client {
                 bir = new BufferedReader(new InputStreamReader(sock.getInputStream()));
                 pw = new PrintWriter(sock.getOutputStream());
 
-            } catch(IOException e){
-
-                e.printStackTrace();
-            }
-
             params[0] = username;
             params[1] = password;
-            try {
+
                 pw.println("New User\n"+username+"\n"+password);
                 pw.flush();
                 String s = bir.readLine();
