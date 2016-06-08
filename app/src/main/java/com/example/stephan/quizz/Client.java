@@ -24,7 +24,6 @@ public class Client {
 
     public Client(){
 
-
     }
 
     public class Login extends AsyncTask<String, Void, String> {
@@ -38,19 +37,15 @@ public class Client {
                 bir = new BufferedReader(new InputStreamReader(sock.getInputStream()));
                 pw = new PrintWriter(sock.getOutputStream());
             } catch(IOException e){
-
                 e.printStackTrace();
             }
 
             username = params[0];
             password = params[1];
             System.out.println(username+password+"Jeg er inde i metoden");
-            String s = null;
-
             try {
-            pw.println("LOGIN\n"+username+"\n"+password);
-            pw.flush();
-
+                pw.println("LOGIN\n"+username+"\n"+password);
+                pw.flush();
                 s = bir.readLine();
                 if(s.equals("OK")){
 
@@ -101,7 +96,6 @@ public class Client {
                 if(s.contains("OK")){
 
                 }
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
