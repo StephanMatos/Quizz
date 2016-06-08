@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.URL;
 
 /**
  * Created by Stephan on 03-06-2016.
@@ -51,7 +52,7 @@ public class Client {
 
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                cancel(true);
             }
             return s;
         }
@@ -59,9 +60,11 @@ public class Client {
         protected void onPostExecute(String s){
             if(s.equals("OK")){
                 loggedIn = true;
+
             }
             else {
                 loggedIn = false;
+
             }
         }
 
@@ -102,6 +105,8 @@ public class Client {
             return null;
         }
     }
+
+
 
 
 }
