@@ -60,7 +60,8 @@ public class LoginActivity extends AppCompatActivity {
                 String p = etPassword.getText().toString();
                 System.out.println(u+p);
 
-                new Login().execute(u,p);
+                client1 = new Client();
+                client1.new Login().execute(u,p);
 
                 Intent loginIntent = new Intent(LoginActivity.this, startmenu.class);
                 LoginActivity.this.startActivity(loginIntent);
@@ -99,60 +100,5 @@ public class LoginActivity extends AppCompatActivity {
                 .show();
     }
 
-
-
-    private Socket sock;
-    private PrintWriter pw;
-    private String username,password;
-    public boolean loggedIn;
-
-    public class Login extends AsyncTask<String, Void, String> {
-
-        protected String doInBackground(String... params) {
-            String ip = "10.16.168.102";
-            String s = null;
-            try{
-                sock = new Socket(ip,2048);
-                System.out.println(sock);
-                bir = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-                pw = new PrintWriter(sock.getOutputStream());
-            } catch(IOException e){
-                e.printStackTrace();
-            }
-
-            username = params[0];
-            password = params[1];
-            System.out.println(username+password+"Jeg er inde i metoden");
-            try {
-                pw.println("LOGIN\n"+username+"\n"+password);
-                pw.flush();
-                s = bir.readLine();
-                if(s.equals("OK")){
-
-                }
-            } catch (IOException e) {
-                cancel(true);
-            }
-            return s;
-        }
-
-        protected void onPostExecute(String s){
-            if(s.equals("OK")){
-                loggedIn = true;
-
-            }
-            else {
-                loggedIn = false;
-                ShowAlert();
-            }
-        }
-
-        protected  void onCancelled(String s) {
-
-        }
-
-
-
-    }
 
 }

@@ -37,14 +37,11 @@ public class Client {
                 System.out.println(sock);
                 bir = new BufferedReader(new InputStreamReader(sock.getInputStream()));
                 pw = new PrintWriter(sock.getOutputStream());
-            } catch(IOException e){
-                e.printStackTrace();
-            }
 
             username = params[0];
             password = params[1];
             System.out.println(username+password+"Jeg er inde i metoden");
-            try {
+
                 pw.println("LOGIN\n"+username+"\n"+password);
                 pw.flush();
                 s = bir.readLine();
@@ -71,29 +68,22 @@ public class Client {
         protected  void onCancelled(String s) {
 
         }
-
-
-
     }
 
     public class newUser extends AsyncTask<String, Void, Void> {
 
         protected Void doInBackground(String... params) {
-            String ip = "62.44.134.26";
+            String ip = "10.16.168.102";
             try{
                 sock = new Socket(ip,2048);
                 bir = new BufferedReader(new InputStreamReader(sock.getInputStream()));
                 pw = new PrintWriter(sock.getOutputStream());
 
-            } catch(IOException e){
+                username = params[0];
+                password = params[1];
+                System.out.println(username+password);
 
-                e.printStackTrace();
-            }
-
-            params[0] = username;
-            params[1] = password;
-            try {
-                pw.println("New User\n"+username+"\n"+password);
+                pw.println("REGISTER\n"+username+"\n"+password);
                 pw.flush();
                 String s = bir.readLine();
                 if(s.contains("OK")){

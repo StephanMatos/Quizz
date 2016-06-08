@@ -40,7 +40,9 @@ public class register extends AppCompatActivity {
                 if(!p.equals(p1)){
                     return;
                 }
+                client1 = new Client();
                 client1.new newUser().execute(u,p);
+
                 Intent start = new Intent(register.this,startmenu.class);
                 register.this.startActivity(start);
             }
