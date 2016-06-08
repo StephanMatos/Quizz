@@ -24,12 +24,14 @@ public class Client {
 
     public Client(){
 
+
     }
 
     public class Login extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... params) {
             String ip = "10.16.168.102";
+            String s = null;
             try{
                 sock = new Socket(ip,2048);
                 System.out.println(sock);
@@ -48,6 +50,7 @@ public class Client {
             try {
             pw.println("LOGIN\n"+username+"\n"+password);
             pw.flush();
+
                 s = bir.readLine();
                 if(s.equals("OK")){
 
@@ -57,6 +60,7 @@ public class Client {
             }
             return s;
         }
+
         protected void onPostExecute(String s){
             if(s.equals("OK")){
                 loggedIn = true;
