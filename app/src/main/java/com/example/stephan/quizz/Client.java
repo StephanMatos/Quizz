@@ -1,5 +1,7 @@
 package com.example.stephan.quizz;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
@@ -34,7 +36,6 @@ public class Client {
                 System.out.println(sock);
                 bir = new BufferedReader(new InputStreamReader(sock.getInputStream()));
                 pw = new PrintWriter(sock.getOutputStream());
-
             } catch(IOException e){
 
                 e.printStackTrace();
@@ -45,16 +46,16 @@ public class Client {
             System.out.println(username+password+"Jeg er inde i metoden");
             String s = null;
             try {
-            pw.println("LOGIN");
-            pw.flush();
-            pw.println(username);
-            pw.flush();
-            pw.println(password);
-            pw.flush();
+                pw.println("LOGIN");
+                pw.flush();
+                pw.println(username);
+                pw.flush();
+                pw.println(password);
+                pw.flush();
                 s = bir.readLine();
-                if(s.contains("OK")){
-                }
+                if(s.equals("OK")){
 
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -66,9 +67,16 @@ public class Client {
             if(s.equals("OK")){
                 loggedIn = true;
             }
-            loggedIn = false;
+            else {
+                loggedIn = false;
+            }
+        }
+
+        protected  void onCancelled(String s) {
 
         }
+
+
 
     }
 
