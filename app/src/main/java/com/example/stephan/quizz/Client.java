@@ -24,7 +24,6 @@ public class Client {
 
     public Client(){
 
-
     }
 
     public class Login extends AsyncTask<String, Void, String> {
