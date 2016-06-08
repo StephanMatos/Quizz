@@ -40,7 +40,6 @@
         android:layout_height="wrap_content"
         android:text="Login"
         android:id="@+id/blogin"
-        android:onClick="Showalert"
         android:layout_below="@+id/etPassword"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"

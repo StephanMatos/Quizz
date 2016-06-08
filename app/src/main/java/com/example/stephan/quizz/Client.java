@@ -44,12 +44,9 @@ public class Client {
             password = params[1];
             System.out.println(username+password+"Jeg er inde i metoden");
             String s = null;
+
             try {
-            pw.println("LOGIN");
-            pw.flush();
-            pw.println(username);
-            pw.flush();
-            pw.println(password);
+            pw.println("LOGIN\n"+username+"\n"+password);
             pw.flush();
                 s = bir.readLine();
                 if(s.contains("OK")){
@@ -58,16 +55,13 @@ public class Client {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             return s;
         }
-
         protected void onPostExecute(String s){
             if(s.equals("OK")){
                 loggedIn = true;
             }
             loggedIn = false;
-
         }
 
     }
@@ -89,14 +83,8 @@ public class Client {
             params[0] = username;
             params[1] = password;
             try {
-                pw.print("New User");
+                pw.println("New User\n"+username+"\n"+password);
                 pw.flush();
-                pw.print(username);
-                pw.flush();
-                pw.print(password);
-                pw.flush();
-
-
                 String s = bir.readLine();
                 if(s.contains("OK")){
 
