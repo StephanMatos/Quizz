@@ -50,7 +50,7 @@
     <ImageButton
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:id="@+id/imageButton"
+        android:id="@+id/brefresh"
         android:background="@drawable/refresh"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/blogout"

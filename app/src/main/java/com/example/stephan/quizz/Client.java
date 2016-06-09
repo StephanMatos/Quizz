@@ -30,7 +30,7 @@ public class Client {
     public class Login extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... params) {
-            String ip = "10.16.168.102";
+            String ip = "10.16.168.254";
             String s = null;
             try{
                 sock = new Socket(ip,2048);
@@ -101,8 +101,6 @@ public class Client {
         pw.flush();
 
     }
-
-
 
 
 }

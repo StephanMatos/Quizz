@@ -1,5 +1,7 @@
 package com.example.stephan.quizz;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -34,22 +36,31 @@ public class register extends AppCompatActivity {
 
         bregister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+
+
                 String u = etUsername.getText().toString();
                 String p = etPassword.getText().toString();
                 String p1 = atPassword.getText().toString();
                 if(!p.equals(p1)){
+                    AlertDialog.Builder fail = new AlertDialog.Builder(register.this);
+                    fail.setMessage("Passwords do not match").setPositiveButton("Try again", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    fail.show();
                     return;
                 }
                 client1 = new Client();
                 client1.new newUser().execute(u,p);
 
+
                 Intent start = new Intent(register.this,startmenu.class);
                 register.this.startActivity(start);
             }
         }
-
         );
     }
-
-
 }
