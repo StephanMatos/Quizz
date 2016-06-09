@@ -68,37 +68,4 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-    /*
-    public void ShowAlert(View view) {
-        AlertDialog.Builder alarm = new AlertDialog.Builder(this);
-        alarm.setMessage("Connection Established").setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        }).create();
-    }
-    */
-
-
-    public void ShowAlert() {
-        new AlertDialog.Builder(this)
-                .setTitle("Connection")
-                .setMessage("Yay! Although this dialog now has two options...")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // try again
-                        //dialog.dismiss();
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // do nothing
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
-    }
-
-
 }
