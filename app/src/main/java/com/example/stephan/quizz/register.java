@@ -60,17 +60,16 @@ public class register extends AppCompatActivity {
 
 
                                              new newUser().execute(u,p);
-
-
                                          }
                                      }
         );
     }
 
 
-    public class newUser extends AsyncTask<String, Void, Void> {
 
-        protected Void doInBackground(String... params) {
+    public class newUser extends AsyncTask<String, Void, String> {
+
+        protected String doInBackground(String... params) {
 
             Network net = Network.getInstance();
             net.Init();
@@ -78,6 +77,7 @@ public class register extends AppCompatActivity {
             BufferedReader bir = net.getBir();
             PrintWriter pw = net.getPw();
             System.out.println(pw+""+bir+""+sock);
+            String s = null;
 
             String username = params[0];
             String password = params[1];
@@ -87,24 +87,26 @@ public class register extends AppCompatActivity {
             pw.flush();
             try {
 
-                String s = bir.readLine();
+                s = bir.readLine();
                 System.out.println(s);
-                if (s.equals("OK")) {
-                    System.out.println("jeg burder gå videre");
-                    Intent loginIntent = new Intent(register.this, startmenu.class);
-                    register.this.startActivity(loginIntent);
-                } else {
 
-                    System.out.println("I else statement");
-
-                System.out.println("efter");
-                }
             }catch (IOException e){
                 e.printStackTrace();
             }
-            return null;
+            return s;
+        }
+        protected void onPostExecute(String s){
+
+            if (s.equals("OK")) {
+                System.out.println("jeg burder gå videre");
+                Intent loginIntent = new Intent(register.this, startmenu.class);
+                register.this.startActivity(loginIntent);
+            } else {
+                Toast.makeText(register.this,"User already exist",Toast.LENGTH_LONG).show();
+            }
         }
     }
+
 
 
 
