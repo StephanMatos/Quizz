@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.stephan.quizz.gameboard">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="175dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/etQuestion"
+        android:layout_above="@+id/bAnswer1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/bAnswer2"
+        android:layout_alignEnd="@+id/bAnswer2"
+        android:text="Quistion"
+        android:gravity="center"/>
+
+    <Button
+        android:layout_width="175dp"
+        android:layout_height="100dp"
+        android:text="Answer 1"
+        android:id="@+id/bAnswer1"
+        android:layout_above="@+id/bAnswer3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="175dp"
+        android:layout_height="100dp"
+        android:text="Answer 2"
+        android:id="@+id/bAnswer2"
+        android:layout_above="@+id/bAnswer4"
+        android:layout_alignLeft="@+id/bAnswer4"
+        android:layout_alignStart="@+id/bAnswer4" />
+
+    <Button
+        android:layout_width="175dp"
+        android:layout_height="100dp"
+        android:text="Answer 3"
+        android:id="@+id/bAnswer3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="44dp" />
+
+    <Button
+        android:layout_width="175dp"
+        android:layout_height="100dp"
+        android:text="Answer 4"
+        android:id="@+id/bAnswer4"
+        android:layout_alignBottom="@+id/bAnswer3"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/player1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/bAnswer1"
+        android:layout_alignEnd="@+id/bAnswer1" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/player2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/bAnswer2"
+        android:layout_alignStart="@+id/bAnswer2"
+        android:gravity="right"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="SCORE"
+        android:id="@+id/score1"
+        android:layout_below="@+id/player1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/etQuestion"
+        android:layout_alignRight="@+id/player1"
+        android:layout_alignEnd="@+id/player1"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="SCORE"
+        android:id="@+id/score2"
+        android:layout_below="@+id/player2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/score1"
+        android:layout_alignLeft="@+id/player2"
+        android:layout_alignStart="@+id/player2"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="100dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=":"
+        android:id="@+id/textView2"
+        android:layout_alignBottom="@+id/score1"
+        android:layout_below="@+id/player1"
+        android:layout_toRightOf="@+id/player1"
+        android:layout_toStartOf="@+id/player2"
+        android:layout_toLeftOf="@+id/player2"
+        android:gravity="center" />
+
+</RelativeLayout>
