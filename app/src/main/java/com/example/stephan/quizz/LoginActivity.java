@@ -7,10 +7,12 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -62,16 +64,16 @@ public class LoginActivity extends AppCompatActivity {
         );
     }
 
-    public class Login extends AsyncTask<String, Void, Void> {
+    public class Login extends AsyncTask<String, Void, String> {
 
-        protected Void doInBackground(String... params) {
+        protected String doInBackground(String... params) {
 
             Network net = Network.getInstance();
             net.Init();
             Socket sock = net.getSock();
             BufferedReader bir = net.getBir();
             PrintWriter pw = net.getPw();
-
+            String s = null;
             String username = params[0];
             String password = params[1];
             System.out.println(username+password+"Jeg er inde i metoden");
@@ -80,30 +82,26 @@ public class LoginActivity extends AppCompatActivity {
             pw.flush();
             try {
 
-                String s = bir.readLine();
+                s = bir.readLine();
                 System.out.println(s);
-                if (s.equals("OK")) {
-                    System.out.println("jeg burde gå videre");
-                    Intent loginIntent = new Intent(LoginActivity.this, startmenu.class);
-                    LoginActivity.this.startActivity(loginIntent);
-                } else {
-                    System.out.println("jeg er oppe i else haha");
-                    AlertDialog.Builder fail = new AlertDialog.Builder(LoginActivity.this);
-                    fail.setMessage("Failed to log in").setPositiveButton("Try again", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-                    fail.show();
 
-                }
             }catch (IOException e){
                 e.printStackTrace();
 
             }
-            return null;
+            return s;
         }
 
+        protected void onPostExecute(String s){
+
+            if (s.equals("OK")) {
+                System.out.println("jeg burder gå videre");
+                Intent loginIntent = new Intent(LoginActivity.this, startmenu.class);
+                LoginActivity.this.startActivity(loginIntent);
+            } else {
+                Toast.makeText(LoginActivity.this,"Wrong username/password",Toast.LENGTH_LONG).show();
+            }
+        }
 
 
     }
