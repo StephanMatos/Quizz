@@ -3,7 +3,8 @@ package com.example.stephan.quizz;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,17 +12,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
+
 
 public class register extends AppCompatActivity {
 
     private GoogleApiClient client;
-    public Client client1;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
@@ -35,25 +40,72 @@ public class register extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
         bregister.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                                         public void onClick(View v) {
 
-                String u = etUsername.getText().toString();
-                String p = etPassword.getText().toString();
-                String p1 = atPassword.getText().toString();
-                if(!p.equals(p1)){
-                    Toast.makeText(getApplicationContext(),
-                            "Password mismatch", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                client1 = new Client();
-                client1.new newUser().execute(u,p);
-                if(client1.getloggedIn()){
-                    Intent start = new Intent(register.this,startmenu.class);
-                    register.this.startActivity(start);
-                }else{
 
-                }
-            }
-        });
+
+                                             String u = etUsername.getText().toString();
+                                             String p = etPassword.getText().toString();
+                                             String p1 = atPassword.getText().toString();
+                                             if(!p.equals(p1)){
+                                                 AlertDialog.Builder fail = new AlertDialog.Builder(register.this);
+                                                 fail.setMessage("Passwords do not match").setPositiveButton("Try again", new DialogInterface.OnClickListener() {
+                                                     public void onClick(DialogInterface dialog, int which) {
+                                                         dialog.dismiss();
+                                                     }
+                                                 });
+                                                 fail.show();
+                                                 return;
+                                             }
+
+
+                                             new newUser().execute(u,p);
+
+
+                                         }
+                                     }
+        );
     }
+
+
+    public class newUser extends AsyncTask<String, Void, Void> {
+
+        protected Void doInBackground(String... params) {
+
+            Network net = Network.getInstance();
+            net.Init();
+            Socket sock = net.getSock();
+            BufferedReader bir = net.getBir();
+            PrintWriter pw = net.getPw();
+            System.out.println(pw+""+bir+""+sock);
+
+            String username = params[0];
+            String password = params[1];
+            System.out.println(username+password+"Jeg er inde i metoden");
+
+            pw.println("REGISTER\n"+username+"\n"+password);
+            pw.flush();
+            try {
+
+                String s = bir.readLine();
+                System.out.println(s);
+                if (s.equals("OK")) {
+                    System.out.println("jeg burder gå videre");
+                    Intent loginIntent = new Intent(register.this, startmenu.class);
+                    register.this.startActivity(loginIntent);
+                } else {
+
+                    System.out.println("I else statement");
+
+                System.out.println("efter");
+                }
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+    }
+
+
+
 }
