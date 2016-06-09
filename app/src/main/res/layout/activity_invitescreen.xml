@@ -57,7 +57,7 @@
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Tele- datanet" />
+                android:text="Tele-Datanet" />
 
             <Button
                 android:id="@+id/bjava"
@@ -78,32 +78,8 @@
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Digital-communication" />
-
-            <Button
-                android:id="@+id/bmath2"
-                android:layout_width="380dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Mathematics 2" />
-
-            <Button
-                android:id="@+id/balgo"
-                android:layout_width="380dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Algorithms and datastructures" />
-
-            <Button
-                android:id="@+id/bmobil"
-                android:layout_width="380dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Mobile communication" />
+                android:text="Digital-Communication" />
 
         </LinearLayout>
-
     </ScrollView>
-
-
 </RelativeLayout>
