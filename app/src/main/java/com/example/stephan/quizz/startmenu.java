@@ -48,4 +48,11 @@ public class startmenu extends AppCompatActivity  {
         pw.flush();
     }
 
+    public void Start(){
+        Network network = Network.getInstance();
+        PrintWriter pw = null;
+        pw = network.getPw();
+        pw.println("");
+    }
+
 }

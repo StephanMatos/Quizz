@@ -45,7 +45,7 @@ public class Network extends Application {
         }catch (IOException e){
             e.printStackTrace();
         }
-        System.out.println("Jeg er i netværk"+sock+""+bir+""+pw);
+        System.out.println("Jeg er i netværk "+" Socket ="+sock+" Bufferedreader="+bir+" Printwriter="+pw);
 
     }
 
