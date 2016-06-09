@@ -63,8 +63,23 @@ public class LoginActivity extends AppCompatActivity {
                 client1 = new Client();
                 client1.new Login().execute(u,p);
 
-                Intent loginIntent = new Intent(LoginActivity.this, startmenu.class);
-                LoginActivity.this.startActivity(loginIntent);
+                if(client1.getloggedIn()){
+                    Intent loginIntent = new Intent(LoginActivity.this, startmenu.class);
+                    LoginActivity.this.startActivity(loginIntent);
+                }else{
+
+                    AlertDialog.Builder fail = new AlertDialog.Builder(LoginActivity.this);
+                    fail.setMessage("Failed to log in").setPositiveButton("Try again", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    fail.show();
+                    return;
+                }
+
+
             }
         });
     }

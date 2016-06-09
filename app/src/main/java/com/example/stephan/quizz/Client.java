@@ -27,6 +27,10 @@ public class Client {
 
     }
 
+    public boolean getloggedIn(){
+        return loggedIn;
+    }
+
     public class Login extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... params) {
@@ -46,7 +50,10 @@ public class Client {
                 pw.flush();
                 s = bir.readLine();
                 if(s.equals("OK")){
-
+                    loggedIn = true;
+                }
+                else{
+                    loggedIn = false;
                 }
             } catch (IOException e) {
                 cancel(true);

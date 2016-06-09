@@ -55,10 +55,17 @@ public class register extends AppCompatActivity {
                 }
                 client1 = new Client();
                 client1.new newUser().execute(u,p);
+                if(client1.getloggedIn()){
+                    Intent start = new Intent(register.this,startmenu.class);
+                    register.this.startActivity(start);
+                }else{
 
 
-                Intent start = new Intent(register.this,startmenu.class);
-                register.this.startActivity(start);
+
+                }
+
+
+
             }
         }
         );
