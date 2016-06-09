@@ -1,7 +1,5 @@
-package com.example.stephan.quizz;
+/*package com.example.stephan.quizz;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
@@ -9,29 +7,36 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.net.URL;
 
-/**
- * Created by Stephan on 03-06-2016.
- */
+
 public class Client {
 
     private Socket sock;
     private BufferedReader bir;
     private PrintWriter pw;
     private String username,password;
-    public boolean loggedIn;
+    public boolean loggedIn,Register;
+    public register register;
+
 
 
     public Client(){
+        this.Register = false;
+        Socket sock = null;
+        BufferedReader bir = null;
+        PrintWriter pw = null;
 
     }
 
-    public boolean getloggedIn(){
+   /* public boolean getloggedIn(){
         return loggedIn;
     }
+    public boolean getRegister(){
+        return Register;
+    }*/
 
-    public class Login extends AsyncTask<String, Void, String> {
+
+    /*public class Login extends AsyncTask<String, Void, String> {
 
         protected String doInBackground(String... params) {
             String ip = "10.16.168.254";
@@ -77,10 +82,11 @@ public class Client {
         }
     }
 
-    public class newUser extends AsyncTask<String, Void, Void> {
+    public class newUser extends AsyncTask<String, Void, String> {
 
-        protected Void doInBackground(String... params) {
+        protected String doInBackground(String... params) {
             String ip = "10.16.168.102";
+            String s = null;
             try{
                 sock = new Socket(ip,2048);
                 bir = new BufferedReader(new InputStreamReader(sock.getInputStream()));
@@ -89,17 +95,27 @@ public class Client {
                 username = params[0];
                 password = params[1];
                 System.out.println(username+password);
-
                 pw.println("REGISTER\n"+username+"\n"+password);
                 pw.flush();
-                String s = bir.readLine();
-                if(s.contains("OK")){
 
+                s = bir.readLine();
+
+                if(s.equals("OK")){
+                    Register = true;
+
+                }else{
+                    Register = false;
                 }
+
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return null;
+            return s;
+        }
+
+        protected void onPostExecute(String s){
+            System.out.println("Hej");
         }
     }
 
@@ -111,3 +127,4 @@ public class Client {
 
 
 }
+*/

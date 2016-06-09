@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import java.io.PrintWriter;
+
 public class startmenu extends AppCompatActivity  {
 
-    @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startmenu);
@@ -23,6 +25,7 @@ public class startmenu extends AppCompatActivity  {
             public void onClick(View v) {
                 Intent logoutIntent = new Intent(startmenu.this, LoginActivity.class);
                 startmenu.this.startActivity(logoutIntent);
+                logOut();
             }
         });
 
@@ -34,4 +37,15 @@ public class startmenu extends AppCompatActivity  {
             }
         });
     }
+
+
+
+    public void logOut(){
+        Network network = Network.getInstance();
+        PrintWriter pw = null;
+        pw = network.getPw();
+        pw.println("LOGOUT");
+        pw.flush();
+    }
+
 }

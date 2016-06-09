@@ -25,14 +25,10 @@ import java.net.Socket;
 public class LoginActivity extends AppCompatActivity {
 
     private GoogleApiClient client;
-    public Client client1;
-    private BufferedReader bir;
-    private View v;
 
 
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -40,8 +36,6 @@ public class LoginActivity extends AppCompatActivity {
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
         final Button blogin = (Button) findViewById(R.id.blogin);
         final TextView tvRegister = (TextView) findViewById(R.id.tvRegister);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
         tvRegister.setOnClickListener(new View.OnClickListener() {
@@ -53,34 +47,66 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         blogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                                      @Override
+                                      public void onClick(View v) {
 
-                String u = etUsername.getText().toString();
-                String p = etPassword.getText().toString();
-                System.out.println(u+p);
+                                          String u = etUsername.getText().toString();
+                                          String p = etPassword.getText().toString();
+                                          System.out.println(u+p);
 
-                client1 = new Client();
-                client1.new Login().execute(u,p);
+                                          new Login().execute(u,p);
 
-                if(client1.getloggedIn()){
+                                      }
+
+                                  }
+        );
+    }
+
+    public class Login extends AsyncTask<String, Void, Void> {
+
+        protected Void doInBackground(String... params) {
+
+            Network net = Network.getInstance();
+            net.Init();
+            Socket sock = net.getSock();
+            BufferedReader bir = net.getBir();
+            PrintWriter pw = net.getPw();
+
+            String username = params[0];
+            String password = params[1];
+            System.out.println(username+password+"Jeg er inde i metoden");
+
+            pw.println("LOGIN\n"+username+"\n"+password);
+            pw.flush();
+            try {
+
+                String s = bir.readLine();
+                System.out.println(s);
+                if (s.equals("OK")) {
+                    System.out.println("jeg burde gå videre");
                     Intent loginIntent = new Intent(LoginActivity.this, startmenu.class);
                     LoginActivity.this.startActivity(loginIntent);
-                }else{
-
+                } else {
+                    System.out.println("jeg er oppe i else haha");
                     AlertDialog.Builder fail = new AlertDialog.Builder(LoginActivity.this);
                     fail.setMessage("Failed to log in").setPositiveButton("Try again", new DialogInterface.OnClickListener() {
-                        @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
                         }
                     });
                     fail.show();
-                    return;
-                }
 
+                }
+            }catch (IOException e){
+                e.printStackTrace();
 
             }
-        });
+            return null;
+        }
+
+
+
     }
+
+
 }
