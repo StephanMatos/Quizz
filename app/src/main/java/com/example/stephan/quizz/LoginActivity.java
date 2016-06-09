@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private GoogleApiClient client;
 
 
+
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -99,7 +100,9 @@ public class LoginActivity extends AppCompatActivity {
                 Intent loginIntent = new Intent(LoginActivity.this, startmenu.class);
                 LoginActivity.this.startActivity(loginIntent);
             } else {
-                Toast.makeText(LoginActivity.this,"Wrong username/password",Toast.LENGTH_LONG).show();
+                Toast toast = Toast.makeText(LoginActivity.this,"Wrong username or password", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             }
         }
 
