@@ -19,13 +19,13 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/bAnswer2"
         android:layout_alignEnd="@+id/bAnswer2"
-        android:text="Quistion"
+        android:text="Hvilket land er det ældste monarki?"
         android:gravity="center"/>
 
     <Button
         android:layout_width="175dp"
         android:layout_height="100dp"
-        android:text="Answer 1"
+        android:text="Frankrig - start timer "
         android:id="@+id/bAnswer1"
         android:layout_above="@+id/bAnswer3"
         android:layout_alignParentLeft="true"
@@ -34,7 +34,7 @@
     <Button
         android:layout_width="175dp"
         android:layout_height="100dp"
-        android:text="Answer 2"
+        android:text="England"
         android:id="@+id/bAnswer2"
         android:layout_above="@+id/bAnswer4"
         android:layout_alignLeft="@+id/bAnswer4"
@@ -43,7 +43,7 @@
     <Button
         android:layout_width="175dp"
         android:layout_height="100dp"
-        android:text="Answer 3"
+        android:text="Danmark"
         android:id="@+id/bAnswer3"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -53,7 +53,7 @@
     <Button
         android:layout_width="175dp"
         android:layout_height="100dp"
-        android:text="Answer 4"
+        android:text="Thailand"
         android:id="@+id/bAnswer4"
         android:layout_alignBottom="@+id/bAnswer3"
         android:layout_alignParentRight="true"
@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="player1"
         android:ems="10"
         android:id="@+id/player1"
         android:layout_alignParentTop="true"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="player2"
         android:ems="10"
         android:id="@+id/player2"
         android:layout_alignParentTop="true"
@@ -90,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="SCORE"
+        android:text="5"
         android:id="@+id/score1"
         android:layout_below="@+id/player1"
         android:layout_alignParentLeft="true"
@@ -98,13 +98,14 @@
         android:layout_above="@+id/etQuestion"
         android:layout_alignRight="@+id/player1"
         android:layout_alignEnd="@+id/player1"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textSize="70sp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="SCORE"
+        android:text="1"
         android:id="@+id/score2"
         android:layout_below="@+id/player2"
         android:layout_alignParentRight="true"
@@ -112,7 +113,8 @@
         android:layout_alignBottom="@+id/score1"
         android:layout_alignLeft="@+id/player2"
         android:layout_alignStart="@+id/player2"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textSize="70sp"/>
 
     <TextView
         android:layout_width="30dp"
@@ -125,6 +127,20 @@
         android:layout_toRightOf="@+id/player1"
         android:layout_toStartOf="@+id/player2"
         android:layout_toLeftOf="@+id/player2"
-        android:gravity="center" />
+        android:gravity="center"
+        android:textSize="70sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/etTimer"
+        android:layout_below="@+id/bAnswer4"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_alignRight="@+id/bAnswer4"
+        android:layout_alignEnd="@+id/bAnswer4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

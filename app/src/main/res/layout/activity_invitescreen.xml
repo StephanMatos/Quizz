@@ -71,14 +71,14 @@
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Mathematics 1" />
+                android:text="Matematik" />
 
             <Button
                 android:id="@+id/bdigital"
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Digital-Communication" />
+                android:text="Digital-kommunikation" />
 
         </LinearLayout>
     </ScrollView>
