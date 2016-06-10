@@ -35,8 +35,7 @@ public class register extends AppCompatActivity {
         final EditText atPassword = (EditText) findViewById(R.id.atPassword);
         final Button bregister = (Button) findViewById(R.id.bregister);
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
+
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
         bregister.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +80,8 @@ public class register extends AppCompatActivity {
 
             String username = params[0];
             String password = params[1];
+            net.setUsername(username);
+
             System.out.println(username+password+"Jeg er inde i metoden");
 
             pw.println("REGISTER\n"+username+"\n"+password);

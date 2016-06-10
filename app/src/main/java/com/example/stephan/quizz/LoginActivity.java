@@ -77,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
             String s = null;
             String username = params[0];
             String password = params[1];
+            net.setUsername(username);
             System.out.println(username+password+"Jeg er inde i metoden");
 
             pw.println("LOGIN\n"+username+"\n"+password);

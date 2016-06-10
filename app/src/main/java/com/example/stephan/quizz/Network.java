@@ -17,6 +17,7 @@ public class Network extends Application {
     private static Socket sock;
     private static  BufferedReader bir;
     private static PrintWriter pw;
+    private String username,password;
 
 
     public Network(){
@@ -24,6 +25,8 @@ public class Network extends Application {
         Socket sock = null;
         BufferedReader bir = null;
         PrintWriter pw = null;
+        String username = null;
+        String password = null;
     }
 
     public static Network getInstance() {
@@ -57,6 +60,15 @@ public class Network extends Application {
     }
     public PrintWriter getPw(){
         return pw;
+    }
+    public String getUsername(){
+        return  username;
+    }
+    public String getPassword(String password){
+        return password;
+    }
+    public void setUsername(String user){
+        this.username = user;
     }
 
 

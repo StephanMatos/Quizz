@@ -1,14 +1,24 @@
 package com.example.stephan.quizz;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.Socket;
 
 public class invitescreen extends AppCompatActivity {
+
+    public BufferedReader bir;
+    public PrintWriter pw;
+    public Socket sock;
+    private String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +38,7 @@ public class invitescreen extends AppCompatActivity {
                 String u = etUsername.getText().toString();
                 String b = Tele.getText().toString();
                 System.out.println(b+u);
-                Invite(u,b);
+                Invite(b,u);
             }
 
         }
@@ -38,9 +48,8 @@ public class invitescreen extends AppCompatActivity {
 
                                     public void onClick(View v) {
                                         String u = etUsername.getText().toString();
-                                        String b = Java.getText().toString();
-                                        System.out.println(b+u);
-                                        Invite(u,b);
+                                        String b = Java.getText().toString();System.out.println(b+u);
+                                        Invite(b,u);
                                     }
 
                                 }
@@ -52,7 +61,7 @@ public class invitescreen extends AppCompatActivity {
                                         String u = etUsername.getText().toString();
                                         String b = math1.getText().toString();
                                         System.out.println(b+u);
-                                        Invite(u,b);
+                                        Invite(b,u);
                                     }
 
                                 }
@@ -73,14 +82,31 @@ public class invitescreen extends AppCompatActivity {
 
     }
 
-
-
     public void Invite(String theme, String username){
 
-        Network network = Network.getInstance();
-        PrintWriter pw = null;
-        pw = network.getPw();
-        pw.println("INVITE\n"+theme+"\n"+username);
+        Network net = Network.getInstance();
+        Socket sock = net.getSock();
+        BufferedReader bir = net.getBir();
+        PrintWriter pw = net.getPw();
+        String user = net.getUsername();
+        System.out.println(theme+username+"        "+bir+"       "+pw);
+        pw.println("INVITE\n"+theme+"\n"+username+"\n"+user);
+        pw.flush();
+        String s = null;
+        try {
+            s = bir.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(s.equals("OK")){
+
+            Intent gameIntent = new Intent(invitescreen.this, gameboard.class);
+            invitescreen.this.startActivity(gameIntent);
+
+        }else{
+            Toast.makeText(invitescreen.this,"User not found, try again",Toast.LENGTH_LONG).show();
+        }
+
 
     }
 
