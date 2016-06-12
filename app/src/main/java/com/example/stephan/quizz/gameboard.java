@@ -2,6 +2,7 @@ package com.example.stephan.quizz;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -36,9 +37,10 @@ public class gameboard extends AppCompatActivity {
         final Button bAnswer4 = (Button) findViewById(R.id.bAnswer4);
         etTimer = (TextView) findViewById(R.id.etTimer);
 
-        etTimer.setText("01:00");
+        etTimer.setText("00:30");
 
-        final Counter timer = new Counter(180000, 1000);
+        final Counter timer = new Counter(30000, 1000);
+
 
         bAnswer1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +77,16 @@ public class gameboard extends AppCompatActivity {
                     TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
 
             System.out.print(hms);
+
+            if (millisUntilFinished < 30000) {
+                etTimer.setTextColor(Color.GREEN);
+            }
+            if (millisUntilFinished < 20001) {
+                etTimer.setTextColor(Color.YELLOW);
+            }
+            if(millisUntilFinished < 10001) {
+                etTimer.setTextColor(Color.RED);
+            }
 
             etTimer.setText(hms);
 
