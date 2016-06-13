@@ -26,8 +26,8 @@ public class gameboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameboard);
 
-        final EditText Player1 = (EditText) findViewById(R.id.player1);
-        final EditText Player2 = (EditText) findViewById(R.id.player2);
+        final TextView Player1 = (TextView) findViewById(R.id.Player1);
+        final TextView Player2 = (TextView) findViewById(R.id.Player2);
         final TextView Score1 = (TextView) findViewById(R.id.score1);
         final TextView Score2 = (TextView) findViewById(R.id.score2);
         final TextView etQuistion = (TextView) findViewById(R.id.etQuestion);
