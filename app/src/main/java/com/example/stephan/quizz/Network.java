@@ -38,7 +38,7 @@ public class Network extends Application {
 
     public void Init (){
 
-        String ip = "80.161.41.138";
+        String ip = "10.16.168.102";
 
         try {
             sock = new Socket(ip, 2048);

@@ -3,7 +3,6 @@ package com.example.stephan.quizz;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.graphics.Color;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.CountDownTimer;
@@ -11,9 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -54,6 +51,7 @@ public class gameboard extends AppCompatActivity {
         etTimer.setText("00:30");
 
         final Counter timer = new Counter(30000, 1000);
+        new Load().execute();
 
 
         bAnswer1.setOnClickListener(new View.OnClickListener() {
@@ -80,8 +78,6 @@ public class gameboard extends AppCompatActivity {
                 timer.start();
             }
         });
-
-       new Load().execute();
 
 
 
@@ -137,25 +133,26 @@ public class gameboard extends AppCompatActivity {
     }
 
 
-    public class Load extends AsyncTask<Void,String,Void>{
+    public class Load extends AsyncTask<Void, String, ArrayList> {
 
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected ArrayList<String> doInBackground(Void... params) {
+
+            String s = "hej";
 
             Network net = Network.getInstance();
             BufferedReader bir = net.getBir();
             PrintWriter pw = net.getPw();
 
-            return null;
-        }
-        protected void onPostExecute(){
+            String question;
+            String answer1;
+            String answer2;
+            String answer3;
+            String answer4;
+            ArrayList<String> index = new ArrayList();
 
-            String question = null;
-            String answer1 = null;
-            String answer2 = null;
-            String answer3 = null;
-            String answer4 = null;
+
             try {
 
                 question = bir.readLine();
@@ -163,16 +160,30 @@ public class gameboard extends AppCompatActivity {
                 answer2 = bir.readLine();
                 answer3 = bir.readLine();
                 answer4 = bir.readLine();
-
+                index.add(question);
+                index.add(answer1);
+                index.add(answer2);
+                index.add(answer3);
+                index.add(answer4);
             }catch (IOException e){
+                e.printStackTrace();
 
             }
 
-            bAnswer1.setText(answer1);
-            bAnswer2.setText(answer2);
-            bAnswer3.setText(answer3);
-            bAnswer4.setText(answer4);
-            etQuestion.setText(question);
+
+
+            return index;
+        }
+
+
+        protected void onPostExecute(ArrayList index){
+
+            etQuestion.setText(index.get(0).toString());
+            bAnswer1.setText(index.get(1).toString());
+            bAnswer2.setText(index.get(2).toString());
+            bAnswer3.setText(index.get(3).toString());
+            bAnswer4.setText(index.get(4).toString());
+
 
         }
 

@@ -64,7 +64,7 @@
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Programming" />
+                android:text="Programmering" />
 
             <Button
                 android:id="@+id/bmath1"
@@ -78,7 +78,7 @@
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Digital-kommunikation" />
+                android:text="Digital-Kommunikation" />
 
         </LinearLayout>
     </ScrollView>
