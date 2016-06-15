@@ -65,7 +65,6 @@ public class gameboard extends AppCompatActivity {
         final Counter timer = new Counter(30000, 1000);
 
         new Load().execute();
-        new Update().execute();
 
         timer.start();
 
@@ -312,6 +311,10 @@ public class gameboard extends AppCompatActivity {
             String answer2;
             String answer3;
             String answer4;
+            String player1;
+            String player2;
+            String score1;
+            String score2;
             ArrayList<String> index = new ArrayList();
 
 
@@ -322,11 +325,20 @@ public class gameboard extends AppCompatActivity {
                 answer2 = bir.readLine();
                 answer3 = bir.readLine();
                 answer4 = bir.readLine();
+                player1 = bir.readLine();
+                player2 = bir.readLine();
+                score1 = bir.readLine();
+                score2 = bir.readLine();
+
                 index.add(question);
                 index.add(answer1);
                 index.add(answer2);
                 index.add(answer3);
                 index.add(answer4);
+                index.add(player1);
+                index.add(player2);
+                index.add(score1);
+                index.add(score2);
 
 
             } catch (IOException e) {
@@ -344,11 +356,14 @@ public class gameboard extends AppCompatActivity {
             bAnswer2.setText(index.get(2).toString());
             bAnswer3.setText(index.get(3).toString());
             bAnswer4.setText(index.get(4).toString());
-
+            Player1.setText(index.get(5).toString());
+            Player2.setText(index.get(6).toString());
+            Score1.setText(index.get(7).toString());
+            Score2.setText(index.get(8).toString());
         }
     }
 
-    public class Update extends AsyncTask<Void, String, ArrayList>{
+    /*public class Update extends AsyncTask<Void, String, ArrayList>{
 
         @Override
         protected ArrayList<String> doInBackground(Void... params) {
@@ -397,7 +412,7 @@ public class gameboard extends AppCompatActivity {
 
 
 
-    }
+    }*/
 
 
 
