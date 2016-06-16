@@ -36,7 +36,6 @@ public class currentgames extends AppCompatActivity {
         button7 = (Button) findViewById(R.id.button7);
         button8 = (Button) findViewById(R.id.button8);
         ArrayList<Button> buttons = new ArrayList<>();
-        buttons.add(button1);buttons.add(button2);buttons.add(button3);buttons.add(button4);buttons.add(button5);buttons.add(button6);buttons.add(button7);buttons.add(button8);
 
         You1 = (TextView) findViewById(R.id.y1);
         You2 = (TextView) findViewById(R.id.y2);
@@ -47,7 +46,7 @@ public class currentgames extends AppCompatActivity {
         You7 = (TextView) findViewById(R.id.y7);
         You8 = (TextView) findViewById(R.id.y8);
         ArrayList<TextView> YOU = new ArrayList<>();
-        YOU.add(You1);YOU.add(You2);YOU.add(You3);YOU.add(You4);YOU.add(You5);YOU.add(You6);YOU.add(You7);YOU.add(You8);
+
 
         Oppenent1 = (TextView) findViewById(R.id.o1);
         Oppenent2 = (TextView) findViewById(R.id.o2);
@@ -58,7 +57,7 @@ public class currentgames extends AppCompatActivity {
         Oppenent7 = (TextView) findViewById(R.id.o7);
         Oppenent8 = (TextView) findViewById(R.id.o8);
         ArrayList<TextView> OPPONENT = new ArrayList<>();
-        OPPONENT.add(Oppenent1);OPPONENT.add(Oppenent2);OPPONENT.add(Oppenent3);OPPONENT.add(Oppenent4);OPPONENT.add(Oppenent5);OPPONENT.add(Oppenent6);OPPONENT.add(Oppenent7);OPPONENT.add(Oppenent8);
+
 
         new refresh().execute();
 
@@ -94,8 +93,11 @@ public class currentgames extends AppCompatActivity {
                 while(active){
 
                     s = bir.readLine();
+                    System.out.println(s+"JEG ER I WHILE LØKKEN NU BLABLABLABLABLABLABLABLABLABLABLA");
 
                     index.add(s);
+                    System.out.println(index+"Dette er STRING s "+s);
+
 
                     if(s.equals("END")){
                         active = false;
@@ -109,9 +111,28 @@ public class currentgames extends AppCompatActivity {
 
         protected void onPostExecute(ArrayList index){
 
+            System.out.println("Jeg er i onPostExecute BLABLABLABLABLABLABLABLABLABLABLABLABLABLABLA");
+
+            ArrayList<Button> buttons = new ArrayList<>();
+            buttons.add(button1);buttons.add(button2);buttons.add(button3);buttons.add(button4);buttons.add(button5);buttons.add(button6);buttons.add(button7);buttons.add(button8);
+            //
+            ArrayList<TextView> YOU = new ArrayList<>();
+            YOU.add(You1);YOU.add(You2);YOU.add(You3);YOU.add(You4);YOU.add(You5);YOU.add(You6);YOU.add(You7);YOU.add(You8);
+            //
+            ArrayList<TextView> OPPONENT = new ArrayList<>();
+            OPPONENT.add(Oppenent1);OPPONENT.add(Oppenent2);OPPONENT.add(Oppenent3);OPPONENT.add(Oppenent4);OPPONENT.add(Oppenent5);OPPONENT.add(Oppenent6);OPPONENT.add(Oppenent7);OPPONENT.add(Oppenent8);
+
+
             for(int i = 0; i<8; i++){
-                if (index.get(i*3) != "END") {
+
+                if (!index.get(i*3).equals("END")) {
+                    System.out.println(buttons+"Jeg er muligvis null"+" Dette er index"+index.size());
                     buttons.get(i).setText("You VS "+index.get(i*3).toString());
+                    System.out.println(i*3);
+                    System.out.println(i*3+1);
+                    System.out.println(i*3+2);
+                    System.out.println(index.get(i*3));
+
                     YOU.get(i).setText(index.get(i*3+1).toString());
                     OPPONENT.get(i).setText(index.get(i*3+2).toString());
                 }
