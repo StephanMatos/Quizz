@@ -36,7 +36,8 @@
 
         <activity android:name=".startmenu" />
         <activity android:name=".invitescreen" />
-        <activity android:name=".gameboard"></activity>
+        <activity android:name=".gameboard" />
+        <activity android:name=".currentgames"></activity>
     </application>
 
 </manifest>

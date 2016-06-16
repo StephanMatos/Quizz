@@ -53,13 +53,4 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <ImageButton
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/brefresh"
-        android:background="@drawable/refresh"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/blogout"
-        android:layout_alignEnd="@+id/blogout" />
-
 </RelativeLayout>
