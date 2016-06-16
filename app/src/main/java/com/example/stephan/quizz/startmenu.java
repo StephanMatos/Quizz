@@ -36,6 +36,14 @@ public class startmenu extends AppCompatActivity  {
                 startmenu.this.startActivity(new_gameIntent);
             }
         });
+
+        bcurrent_game.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent currentgameIntent = new Intent(startmenu.this, currentgames.class);
+                startmenu.this.startActivity(currentgameIntent);
+            }
+        });
     }
 
 
