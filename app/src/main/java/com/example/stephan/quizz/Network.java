@@ -48,8 +48,6 @@ public class Network extends Application {
         }catch (IOException e){
             e.printStackTrace();
         }
-        System.out.println("Jeg er i netværk "+" Socket ="+sock+" Bufferedreader="+bir+" Printwriter="+pw);
-
     }
 
     public Socket getSock(){
