@@ -94,6 +94,7 @@ public class currentgames extends AppCompatActivity {
                 while(active){
 
                     s = bir.readLine();
+
                     index.add(s);
 
                     if(s.equals("END")){
@@ -109,9 +110,14 @@ public class currentgames extends AppCompatActivity {
         protected void onPostExecute(ArrayList index){
 
             for(int i = 0; i<8; i++){
-                buttons.get(i).setText("You VS"+index.get(i).toString());
-                YOU.get(i).setText(index.get(i*3+1).toString());
-                OPPONENT.get(i).setText(index.get(i*3+2).toString());
+                if (index.get(i*3) != "END") {
+                    buttons.get(i).setText("You VS "+index.get(i*3).toString());
+                    YOU.get(i).setText(index.get(i*3+1).toString());
+                    OPPONENT.get(i).setText(index.get(i*3+2).toString());
+                }
+                else {
+                    i = 8;
+                }
 
             }
 
