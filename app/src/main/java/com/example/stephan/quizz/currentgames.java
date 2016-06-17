@@ -3,6 +3,7 @@ package com.example.stephan.quizz;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -60,6 +61,72 @@ public class currentgames extends AppCompatActivity {
 
 
         new refresh().execute();
+
+
+        button1.setOnClickListener(new View.OnClickListener() {
+                                        public void onClick(View v) {
+                                            if(!button1.getText().equals("")){
+
+                                            }
+                                        }
+                                    }
+        );
+        button2.setOnClickListener(new View.OnClickListener() {
+                                       public void onClick(View v) {
+                                           if(!button1.getText().equals("")){
+
+                                           }
+                                       }
+                                   }
+        );
+        button3.setOnClickListener(new View.OnClickListener() {
+                                       public void onClick(View v) {
+                                           if(!button1.getText().equals("")){
+
+                                           }
+                                       }
+                                   }
+        );
+        button4.setOnClickListener(new View.OnClickListener() {
+                                       public void onClick(View v) {
+                                           if(!button1.getText().equals("")){
+
+                                           }
+                                       }
+                                   }
+        );
+        button5.setOnClickListener(new View.OnClickListener() {
+                                       public void onClick(View v) {
+                                           if(!button1.getText().equals("")){
+
+                                           }
+                                       }
+                                   }
+        );
+        button6.setOnClickListener(new View.OnClickListener() {
+                                       public void onClick(View v) {
+                                           if(!button1.getText().equals("")){
+
+                                           }
+                                       }
+                                   }
+        );
+        button7.setOnClickListener(new View.OnClickListener() {
+                                       public void onClick(View v) {
+                                           if(!button1.getText().equals("")){
+
+                                           }
+                                       }
+                                   }
+        );
+        button8.setOnClickListener(new View.OnClickListener() {
+                                       public void onClick(View v) {
+                                           if(!button1.getText().equals("")){
+
+                                           }
+                                       }
+                                   }
+        );
 
 
     }
